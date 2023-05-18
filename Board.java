@@ -7,14 +7,16 @@ public class Board {
     private boolean minesSet;
     //Boolean that checks if the game has started
     private boolean gameStart;
+    //Boolean the returns true if the game is won
     private boolean won = false;
+    //Boolean the returns true if the game is lost
     private boolean lost = false;
     //Total number of mines
     private final int totalMines;
     private Tile[][] tiles;
     //Tile size variable to make it easier to debug and change tile size
     private final int tileSize = 35;
-
+    //Constructer for the board class
     public Board(int length, int width, int mines) {
         tiles = new Tile[width][length];
         for (int row = 0; row < tiles.length; row++) {
@@ -54,12 +56,12 @@ public class Board {
         }
         return count;
     }
-    //
+    //Starts the game and allows the mines to be set
     public void start() {
         minesSet = false;
         gameStart = true;
     }
-
+    //Returns true if the game has been lost by the user
     public boolean isLost() {
         if (won) {
             return false;
@@ -75,7 +77,7 @@ public class Board {
         return false;
     }
 
-
+    //Returns true if the game has been won by the user
     public boolean isWon() {
         if (lost) {
             return false;
@@ -111,7 +113,7 @@ public class Board {
         }
         return numMines;
     }
-
+    //Returns the numeber of flags near a tile
     private int getNearFlags(int r, int c) {
         if (tiles[r][c].isFlagged()) {
             return 0;
@@ -155,7 +157,7 @@ public class Board {
     public void flag(int r, int c) {
         tiles[r][c].toggleFlag();
     }
-    //
+    //If the number of flags is equal to number of mines around a tile you can sweep it to open any unflagged tiles around it
     public void sweep(int r, int c) {
         if (getNearFlags(r, c) == getNearMines(r, c) && tiles[r][c].isOpen()) {
             int numRows = getLength();
@@ -226,7 +228,7 @@ public class Board {
                 }
             }
         }
-
+        //Colors the tile based off of whether they are open, flagged, a mine, etc.
         for (int r = 0; r < getLength(); r++) {
             for (int c = 0; c < getWidth(); c++) {
 
