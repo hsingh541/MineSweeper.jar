@@ -5,13 +5,13 @@ public class Minesweeper extends PApplet {
     public static void main(String[] args) {
         PApplet.main(new String[]{Minesweeper.class.getName()});
     }
-
-    //PApplet p = new PApplet();
+    //Instance variable for the board
     private Board board;
+    //Instance variable for the timer
     private Timer timer;
     //Boolean that records whether an option has been chosen from the difficulty menu
     private boolean clicked;
-
+    //Constructer for the minesweeper class
     public Minesweeper() {  
         board = new Board(0, 0, 0);
         timer = new Timer(this);
@@ -23,12 +23,12 @@ public class Minesweeper extends PApplet {
             size(500, 500);
         }
     }
-    //
+    //Sets the background color and makes it so that the window can be resized
     public void setup() {
         surface.setResizable(true);
         background(152, 190, 100);
     }
-
+    //Draws the board and creates all the text that shows up on the screen
     public void draw() {
         frameRate(60);
         PFont f = createFont("Arial", board.getTileSize(), true);
@@ -72,7 +72,7 @@ public class Minesweeper extends PApplet {
     }
 
     boolean started = false;
-
+    //Checks if the mouse has been clicked
     public void mouseClicked() {
         int x = mouseX;
         int y = mouseY;
@@ -130,7 +130,7 @@ public class Minesweeper extends PApplet {
             }
         }
     }
-
+    //Checks if a key has been pressed
     public void keyPressed() {
         int x = mouseX;
         int y = mouseY;
