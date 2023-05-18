@@ -13,9 +13,7 @@ public class Timer {
         startTime = 0;
         endTime = -1;
     }
-    /*Returns the time
-
-    * */
+    //Returns the time
     public int getTime () {
         if (startTime == 0)
             return 0;
@@ -36,7 +34,7 @@ public class Timer {
         startTime = 0;
         endTime = 0;
     }
-
+    //Returns the current endtime
     public int getEndTime() {
         return endTime;
     }
